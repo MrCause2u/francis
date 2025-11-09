@@ -5,9 +5,7 @@
 .navbar {
     background: darkred;
     font-family: 'Times New Roman', Times, serif;
-    position: relative;
-    left: 10px;
-    right: 10px
+    position-left: 10;
     padding-left: 15px;
 }
 
