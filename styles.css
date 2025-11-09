@@ -5,19 +5,20 @@
 .navbar {
     background: darkred;
     font-family: 'Times New Roman', Times, serif;
-    position-left: 15px;
+    position: relative;
+    left: 15px;
     padding-left: 15px;
 }
 
 .navdiv {
     display: flex;
-    justify-content: space-between ;
+    justify-content: space-between;
     align-items: center;
 }
 
 logo a {
     font-size: 40px;
-    font-weight: 600;
+    font-weight: 600px;
     color: white;
 }
 
@@ -38,7 +39,7 @@ button {
     border-radius: 10px;
 padding: 10px;
 margin-left: 10px;
-width: 90px;
+width: 80px;
 }
 
 button a {
