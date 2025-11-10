@@ -46,3 +46,53 @@ button a{
   font-weight: bold;
   font-size: 15px;
 }
+
+/* styles.css */
+
+/* ... Your desktop styles here ... */
+
+@media (max-width: 768px) {
+    /* Hide the list of links (ul) and buttons on small screens */
+    .navdiv ul {
+        display: none; 
+    }
+    
+    .navdiv button {
+        display: none; 
+    }
+    
+    /* Ensure the logo (NatumanyaFrancis) is still visible and centered */
+    .logo {
+        /* You might want to adjust font size or alignment here */
+        text-align: center;
+        width: 100%;
+    }
+}
+
+.mobile-menu-icon {
+    display: none; /* Hidden by default for large screens */
+    font-size: 30px;
+    /* Add styling for positioning */
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-icon {
+        display: block; /* Show the icon on small screens */
+        position: absolute; /* Position it correctly, e.g., top-right */
+        right: 20px;
+        top: 15px;
+    }
+
+    /* Default mobile menu state: hidden, stacked */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        /* Other styling to make it look like a drop-down menu */
+    }
+
+    /* You'll use JavaScript to add a class (e.g., .open) to show it */
+    .nav-links.open {
+        display: flex; /* Show the menu when the hamburger is tapped */
+    }
+}
