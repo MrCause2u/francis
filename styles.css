@@ -7,9 +7,9 @@
 }
 
 :root {
-    --primary: #667eea;
-    --primary-dark: #5568d3;
-    --secondary: #764ba2;
+    --primary: #e74c3c;
+    --primary-dark: #c0392b;
+    --secondary: #d35400;
     --text-dark: #2d3436;
     --text-light: #636e72;
     --bg-light: #f8f9fa;
@@ -39,107 +39,93 @@ a {
 
 /* ==================== Navigation ==================== */
 
-.navbar {
-    background: var(--bg-white);
-    border-bottom: 1px solid var(--border-color);
+/* ==================== Navigation ==================== */
+
+.navbar-centered {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    text-align: center;
+    padding: 20px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.nav-container {
+.navbar-centered .navdiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 0 20px;
 }
 
-.nav-logo a {
+.logo-section {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    font-weight: 600;
-    font-size: 1.2rem;
-    color: var(--text-dark);
+    gap: 12px;
 }
 
-.logo-img {
-    width: 40px;
-    height: 40px;
+.nav-profile-img {
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
+    border: 3px solid white;
     object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
-.nav-menu {
-    display: flex;
+.nav-profile-img:hover {
+    transform: scale(1.1);
+}
+
+.navbar-centered .logo {
+    color: white;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 1px;
+    transition: transform 0.3s ease;
+    font-style: italic;
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.navbar-centered .logo:hover {
+    transform: scale(1.05);
+}
+
+.navbar-centered ul {
     list-style: none;
-    gap: 3rem;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.nav-link {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--text-light);
-    position: relative;
-    transition: color 0.3s ease;
-}
-
-.nav-link:hover,
-.nav-link.active {
-    color: var(--primary);
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--primary);
-    transition: width 0.3s ease;
-}
-
-.nav-link.active::after,
-.nav-link:hover::after {
-    width: 100%;
-}
-
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.hamburger span {
-    width: 25px;
-    height: 3px;
-    background: var(--text-dark);
-    border-radius: 2px;
+.navbar-centered a {
+    color: #ecf0f1;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-decoration: none;
     transition: all 0.3s ease;
+    padding: 5px 10px;
+    border-bottom: 2px solid transparent;
 }
 
-@media (max-width: 768px) {
-    .nav-menu {
-        gap: 1.5rem;
-    }
-
-    .nav-link {
-        font-size: 0.9rem;
-    }
+.navbar-centered a:hover {
+    color: #f39c12;
+    border-bottom-color: #f39c12;
 }
 
 /* ==================== Hero Section ==================== */
 
 .hero {
     padding: 6rem 2rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #e74c3c 0%, #d35400 100%);
     color: white;
 }
 
@@ -445,7 +431,7 @@ footer {
 
 .page-hero {
     padding: 4rem 2rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #e74c3c 0%, #d35400 100%);
     color: white;
     text-align: center;
 }
@@ -544,7 +530,7 @@ footer {
 }
 
 .cta-section {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #e74c3c 0%, #d35400 100%);
     color: white;
     padding: 3rem 2rem;
     border-radius: 12px;
@@ -586,12 +572,9 @@ footer {
 /* ==================== Responsive Design ==================== */
 
 @media (max-width: 768px) {
-    .nav-menu {
-        display: none;
-    }
-
-    .hamburger {
-        display: flex;
+    .navbar-centered ul {
+        gap: 15px;
+        flex-direction: column;
     }
 
     .highlights h2,

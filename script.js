@@ -1,6 +1,6 @@
 // Navigation Script
 (function() {
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinks = document.querySelectorAll('.navbar-centered a');
     const currentLocation = location.pathname;
 
     // Set active link based on current page
@@ -9,38 +9,17 @@
         
         // Check if we're on the home page
         if ((currentLocation === '/' || currentLocation.includes('index.html')) && href === 'index.html') {
-            link.classList.add('active');
+            link.style.color = '#f39c12';
         } else if (currentLocation.includes(href.replace('.html', '')) && href !== 'index.html') {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
+            link.style.color = '#f39c12';
         }
     });
 
-    // Mobile menu toggle
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-
-    if (hamburger) {
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-    }
-
-    // Close menu when a link is clicked
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (navMenu) {
-                navMenu.classList.remove('active');
-            }
-        });
-    });
-
-    // Smooth scroll behavior
+    // Smooth scroll behavior for anchor links
     document.addEventListener('click', (e) => {
-        if (e.target.classList.contains('nav-link')) {
+        if (e.target.tagName === 'A') {
             const href = e.target.getAttribute('href');
-            if (href.startsWith('#')) {
+            if (href && href.startsWith('#')) {
                 e.preventDefault();
                 const target = document.querySelector(href);
                 if (target) {
