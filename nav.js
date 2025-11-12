@@ -1,30 +1,49 @@
-// Small accessible toggle for the mobile navigation
-(function(){
-  const nav = document.querySelector('.navbar-modern');
-  const toggle = document.querySelector('.nav-toggle');
-  const navLinks = document.getElementById('primary-navigation');
+// Navigation Enhancement Script
+(function() {
+    // Smooth scroll behavior is now handled by CSS scroll-behavior: smooth
 
-  if (!nav || !toggle || !navLinks) return;
+    // Add active class to current navigation link based on scroll position
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.navbar-centered a[href^="#"]');
 
-  toggle.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  });
+    function updateActiveLink() {
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= sectionTop - 100) {
+                current = section.getAttribute('id');
+            }
+        });
 
-  // Close menu when a link is clicked (mobile)
-  navLinks.addEventListener('click', (e) => {
-    if (e.target.tagName === 'A' && nav.classList.contains('open')) {
-      nav.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
     }
-  });
 
-  // Close on ESC
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && nav.classList.contains('open')) {
-      nav.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.focus();
-    }
-  });
+    // Update active link on scroll
+    window.addEventListener('scroll', updateActiveLink);
+
+    // Update on page load
+    updateActiveLink();
+
+    // Add keyboard navigation support
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            // Close any open menus if needed
+            console.log('Escape key pressed');
+        }
+    });
+
+    // Analytics: Log when external links are clicked
+    const externalLinks = document.querySelectorAll('a[target="_blank"]');
+    externalLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            console.log('Visiting external link:', link.href);
+        });
+    });
 })();
